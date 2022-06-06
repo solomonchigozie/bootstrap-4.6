@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>Forms</title>
+</head>
+<body>
+    <div class="container-fluid bg-success vh-100 h-100">
+        <div class="row py-5 justify-content-center">
+            <!-- using offset -->
+            <!-- <div class="offset-md-3 col-md-6 bg-white">
+                <h1>form</h1>
+            </div> -->
+            <div class="col-md-6 bg-white">
+                <h3 class="text-center my-2">
+                    Registration Form
+                </h3>
+                <form action="">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="phone" class="form-control" placeholder="phone">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <select name="" id="destination" class="form-control">
+                            <option value="">--choose one --</option>
+                            <option value="Ng">Nigeria</option>
+                            <option value="Usa">USA</option>
+                        </select>
+                    </div>
+                    <!-- input groups  -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="username">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">https://www.jumia.com/</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="subdomain">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="youremail">
+                        <div class="input-group-append">
+                            <span class="input-group-text">@gmail.com</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+        <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+        <script src="bootstrap/js/jquery.min.js" ></script>
+        <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

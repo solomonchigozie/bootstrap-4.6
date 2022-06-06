@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>JQUERY</title>
+    <style>
+        #slidediv{
+            background: #88e7e7;
+            padding: 20px;
+            width: 40%;
+            display: none;
+        }
+        #anim{
+            width:20px;
+            height : 20px;
+            background : red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="spinner spinner-border" id="showspinner"></div>
+    <button>click</button>
+    <button class="btn1">click me</button>
+    <a href="">am a link</a>
+    <input type="text" placeholder="Your Full Name">
+    <button id="btn">Click me again</button>
+    <button id="btn20">hide/show</button>
+
+    <div id="show"></div>
+    <!-- slide  -->
+    <hr>
+    <button id="slidebtn">Slide Button</button>
+
+    <div id="slidediv">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        Aut neque laboriosam pariatur explicabo molestiae animi, 
+        amet facere beatae, quidem commodi ex inventore. 
+        Necessitatibus quas omnis, expedita harum pariatur dolorem labore!
+    </div>
+    <div>shdkshdk</div>
+
+    <button id="animatebtn">Animate</button>
+
+    <div id="anim"></div>
+
+    <div id="something">
+        <span class="name">my name is solomon</span>
+    </div>
+
+    <button id="gettext" class="getthetext">Get Text</button>
+
+    <hr>
+
+    <div class="question">
+        <select name="" id="gender">
+            <option value="">--select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+
+    <div>
+        <input type="text" id="address">
+    </div>
+
+    <button class="loadingbutton btn my-4 btn-danger">Show Spinner</button>
+    <div id="loadingspinner"></div>
+
+    <button id="postBtn" class="btn btn-info">Send AjAX Post</button>
+    
+
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="bootstrap/js/jquery.min.js" ></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        console.log("loading")
+
+        $(document).ready(function(){
+            // let spinner = document.querySelector("#showspinner")
+            // spinner.style.display = 'none'
+
+            //selectors
+            $("#showspinner").css('display', 'none')
+            $(".spinner")   //id 
+            jQuery(".spinner")
+            $("button.btn1").css("backgroundColor", "red")
+
+            $("button#btn").click(function(){
+                $("[href]").hide()
+                $(this).css("backgroundColor", "green")
+            })
+
+            $("tr:even").css("backgroundColor","#e1e1e1")
+            $("tr:odd").css("backgroundColor","#eeeeee")
+
+
+            console.log("page has finished loading")
+
+            //events
+            $("[href]").mouseover(function(){
+                alert("hi")
+            })
+
+            //hover
+            //focus
+            $("input[type='text']").hover(function(){
+                // alert("hello")
+                console.log("input")
+            })
+
+            $("input[type='text']").focus(function(){
+                $(this).css("border", "none")
+                $(this).css("backgroundColor", "orange")
+            })
+
+            //using the on method of events
+            $("#btn").on("click", function(){
+                $(this).css("backgroundColor", "red")
+            }, function(){
+                alert("completed")
+            })
+
+            $("input[type='text']").on("keyup", function(){
+                // console.log($(this).val())
+                $("#show").text($(this).val())
+            })
+
+            $("#btn20").on("click",function(){
+                // $("[href]").hide()
+                // $("[href]").show()
+                $("[href]").toggle()
+            })
+
+            $("#slidebtn").click(function(){
+                $("#slidediv").slideToggle("fast")
+            })
+
+            //animation
+            $("#animatebtn").on("click", function(){
+                $("#anim").animate({
+                    height: '100px',
+                    width : '100px',
+                    left : '300px'
+                }, 3000)
+            })
+
+            //chaining
+            console.log($(".name").parent("div").attr("id"))
+
+            //get methods
+            $("#gettext").click(function(){
+                //display text in the console
+                console.log($("#something").text())
+            })
+
+            $("#gettext").click(function(){
+                //display html in the console
+                console.log($("#something").html())
+            })
+
+            $("#gettext").click(function(){
+                //display this button's class attribute in the console
+                console.log($(this).attr("class"))
+            })
+
+            //add
+            $("#gender").change(function(){
+
+                if($(this).val() == "male"){
+                    $(".question").append(`
+                    <div class="malediv">You have recieved &#8358;10,000 </div>
+                    `)
+
+                    //remove female div when male div appears
+                    $(".femalediv").remove()
+
+                }else if($(this).val() == "female"){
+                    $(".question").prepend(`
+                    <div class="femalediv">
+                        <input type='number' placeholder='How much do you need'>   
+                    </div>
+                    `)
+
+                    //remove male div when female div appears
+                    $(".malediv").remove()
+                }
+            })
+
+            $("#address").focus(function(){
+                $(this).addClass("bg-primary")
+                $(this).parent().addClass("form-group my-2")
+            })
+
+            $(".loadingbutton").on('click', function(){
+                $("#loadingspinner").addClass("spinner spinner-border text-danger")
+
+                //remove spinner after a duration
+                // setTimeout( functionname, time)
+
+                setTimeout(()=>{
+                    $("#loadingspinner").removeClass()
+                    console.log("remove spinner")
+                }, 3000)
+            })
+
+            //ajax
+            $.ajax({
+                url : 'http://localhost/bs/request.html',
+                type : 'GET',
+                success: function(response){
+                    console.log(response)
+
+                    //attach response beneath the spinner button
+                    $("#loadingspinner").after(response)
+                }
+            })
+
+            //ajax post
+            $("#postBtn").click(function(){
+
+                $.ajax({
+                    url : 'http://localhost/bs/request.html',
+                    type : 'POST',
+                    data : {music : 'celine', category : 'afro'},
+                    beforeSend : function(){
+                        $("#postBtn").html("please wait...")
+                    },
+                    success: function(response){
+                        console.log(response)
+                        $("#postBtn").html("Send AJAX Post")
+
+                        //attach response beneath the spinner button
+                        $("#loadingspinner").after(response)
+                    }
+                })
+
+            })
+            
+            // $.post('url', 'data', 'callback')
+
+            $.post('request.html', {name : 'telema'}, function(data){
+                console.log("completed")
+            })
+
+            // $.get('url', 'callback')
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .bg__1{
+            background: #e1e1e1;
+            box-shadow: 2px 2px 3px 1px #e0d6d6;
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner spinner-border spinner-border-sm"></div>
+
+    <div class="spinner spinner-grow"></div>
+
+    <!-- example  -->
+    <hr>
+    <button class="btn btn-primary">
+        Please wait <span class="spinner spinner-grow spinner-grow-sm"></span>
+    </button>
+
+    <hr>
+    <button class="btn btn-primary" id="click">
+        Submit <span class="spinner"></span>
+    </button>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" 
+            style="width: 25%" 
+            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    
+    <br><br>
+    <div class="container">
+        <div class="row d-none d-md-block">
+            <div class="col-4">abcd</div>
+            <div class="col-4">abcd</div>
+            <div class="col-4">abcd</div>
+        </div>
+        <div class="row d-md-none d-sm-inline">
+            <div class="col-4 bg__1">&#8358;5,000</div>
+            <div class="col-4 shadow">&#8358;5,000</div>
+            <div class="col-4 shadow-lg">&#8358;5,000</div>
+        </div>
+    </div>
+
+    <span class="text-danger visible">hello</span>
+
+    
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="bootstrap/js/jquery.min.js" ></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let click = document.querySelector("#click")
+        let spinner = document.querySelector('.spinner')
+
+        const showSpinner =()=>{
+            click.innerHTML = `Please wait...
+            <span class='spinner spinner-border spinner-border-sm'></span>`;
+            
+            setTimeout(() => {
+                alert("submitted successfully")
+                click.innerHTML = "Submit"
+            }, 3000);
+        
+        }
+        click.addEventListener('click', showSpinner)
+    </script>
+</body>
+
+</html>
